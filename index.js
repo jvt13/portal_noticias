@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
-var porta = 5000;
+var porta = 3000;
 
 var conexao = require('./services/bd/conexao.js');
 const Posts = require('./services/bd/Posts.js');
