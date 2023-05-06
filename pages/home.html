@@ -1,0 +1,83 @@
+<%- include('partials/header.html') %>
+
+    <section class="noticia-destaque">
+        <div class="center">
+            <div class="img-destaque">
+                <div class="overlay-destaque">
+                    <div class="title-destaque-descricao">
+                        <a href="<%= posts[0].slug %>">
+                            <h2>
+                                <%= posts[0].titulo %>
+                            </h2>
+                        </a>
+                        <p>
+                            <%- posts[0].descricaoCurta %>...
+                        </p>
+                    </div>
+                </div>
+
+                <img src="/public/imagens/<%= posts[0].imagem %>" />
+            </div>
+        </div>
+    </section>
+
+    <section class="outras-noticias">
+        <div class="title-outras-noticias">
+            <h2>Últimas Noticias</h2>
+            <br><br>
+            <div class="center">
+                <div class="ultimas">
+
+                    <% for(let i=1; i < posts.length; i++){ %>
+                        <div class="box-ultima-single">
+                            <img src="/public/imagens/<%= posts[i].imagem %>" />
+                            <div class="conteudo-noticia-single">
+                                <h3>
+                                    <%= posts[i].categoria %>
+                                </h3>
+                                <h2>
+                                    <%= posts[i].titulo %>
+                                </h2>
+                                <p>
+                                    <%- posts[i].descricaoCurta %>...
+                                </p>
+                                <a href="<%= posts[i].slug %>">Saiba mais</a>
+                            </div>
+                        </div>
+
+                        <% } %>
+
+                </div>
+
+
+                <div class="mais-lidas">
+                    <h3>Mais Lidas</h3>
+
+                    <% for(let i=0; i < postsTop.length; i++){ %>
+                        <div class="mais-lidas-noticias-single">
+                            <div class="mais-lidas-noticias-single">
+                                <img src="/public/imagens/<%= postsTop[i].imagem %>" />
+                                <div class="texto-mais-lidas-single">
+                                    <h4>
+                                        <%= postsTop[i].titulo %>
+                                    </h4>
+                                    <p>
+                                        <%- postsTop[i].descricaoCurta %>... - <span
+                                                style="font-size: 12px; font-weight: bold;">(<%= postsTop[i].views %>
+                                                    Views)</span>
+                                    </p>
+                                    <a href="<%= postsTop[i].slug %>">Saiba mais</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include('partials/footer.html') %>
+        </body>
+
+        </html>

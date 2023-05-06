@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do admin</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .header-panel {
+            width: 100%;
+            padding: 10px;
+            background-color: #008cff;
+            color: white;
+        }
+
+        form {
+            padding: 10px;
+            margin: 20px 0;
+        }
+
+        form input {
+            margin-bottom: 20px;
+            width: 100%;
+            height: 40px;
+            padding-left: 10px;
+            border: 1px solid #ccc;
+        }
+
+        form textarea {
+            width: 100%;
+            height: 120px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        form input[type=submit] {
+            margin-top: 40px;
+            width: 100%;
+            height: 40px;
+            background-color: #008cff;
+            border: 0;
+            cursor: pointer;
+            color: white;
+        }
+
+        .title-listando-noticias {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 10px;
+            background-color: #008cff;
+            color: white;
+        }
+
+        .noticia-single {
+            margin-top: 20px;
+            border-bottom: 2px dashed #ccc;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .header-autor {
+            padding: 10px;
+            margin: 20px 0;
+            width: 100%;
+            height: 40px;
+            background-color: #008cff;
+            border: 0;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header-panel">
+        <h2>Cadastro Noticia</h2>
+    </div>
+
+    <div class="header-autor">
+        <h3>Autor: <%= global.login %>
+        </h3>
+    </div>
+
+    <form method="post" action="/admin/cadastro">
+        <input type="text" name="autor" placeholder="Autor" value="<%= global.login %>"/>
+        <input type="text" name="titulo_noticia" placeholder="Titulo da noticia" />
+        <input type="text" name="url_imagem" placeholder="Link da imagem da noticia" />
+        <input type="text" name="slug" placeholder="Slug" />
+        <input type="text" name="categoria" placeholder="Categoria da noticia" />
+        <input type="text" name="fonte" placeholder="Fonte da noticia" />
+        <textarea placeholder="Noticia..." name="conteudo"></textarea>
+        <input type="submit" name="acao" value="Cadastrar" />
+    </form>
+
+    <div class="title-listando-noticias"> 
+        <h2>Listando Noticias: <%= posts.length  %> </h2>
+    </div>
+
+    <% for(let i = 0; i < posts.length; i++){ %>
+    <div class="noticia-single">
+        <p>Noticia:<%= posts[i].titulo %> - <%= posts[i].id %></p>
+        <a href="/admin/deletar/<%= posts[i].id %>&<%= posts[i].imagem %>">(X)</a>
+    </div>
+
+    <% } %>
+
+</body>
+
+</html>
